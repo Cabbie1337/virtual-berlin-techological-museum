@@ -10,10 +10,50 @@
 <body class="flex">
 
     <script>
+        
+        // make an array of 10 name
+
+        var names = [
+            {
+                "name": 'John',
+            },
+            {
+                "name": 'Jane',
+            },
+            {
+                "name": 'Jack',
+            },
+            {
+                "name": 'Jill',
+            },
+            {
+                "name": 'Joe',
+            },
+            {
+                "name": 'Jenny',
+            },
+            {
+                "name": 'Jules',
+            },
+            {
+                "name": 'Julia',
+            },
+            {
+                "name": 'Jasper',
+            },
+            {
+                "name": 'Jasmine',
+            }
+        ];   
+        
         // create 10 divs
         for (var i = 0; i < 10; i++) {
             var div = document.createElement('div');
             div.classList.add('h-screen');
+            
+            // set the id of the div
+            div.id = i;
+
             // add a image element to the div
             var img = document.createElement('img');
             img.src = 'https://via.placeholder.com/300x200';
@@ -24,12 +64,23 @@
             img.addEventListener('click', function(e) {
                 var popup = document.createElement('div');
                 popup.classList.add('bg-white', 'rounded', 'shadow-lg', 'p-4', 'absolute', 'pin-t', 'pin-r', 'pin-l', 'pin-b', 'z-10', 'w-full', 'h-full');
-                popup.innerHTML = '<h1 class="text-2xl">Hello World</h1>';
+                
+                // add a panel that fills the width of the popup and only fills 1/4 of the popup
+                var panel = document.createElement('div');
+                panel.classList.add('w-full', 'h-full', 'flex', 'flex-col');
+                popup.appendChild(panel);
+
+                // add a h1 element to the panel
+                var h1 = document.createElement('h1');
+                h1.innerText = names[e.target.parentElement.id].name;
+                panel.appendChild(h1);
+
                 // add a close button
                 var close = document.createElement('button');
-                close.classList.add('absolute', 'pin-t', 'pin-r', 'pin-l', 'pin-b', 'z-10', 'text-white', 'bg-red-500', 'rounded', 'shadow-lg', 'p-2', 'hover:bg-red-600', 'hover:text-white');
+                close.classList.add('pin-t', 'pin-r', 'pin-l', 'pin-b', 'z-10', 'text-white', 'bg-red-500', 'rounded', 'shadow-lg', 'p-2', 'hover:bg-red-600', 'hover:text-white');
                 close.innerHTML = '&times;';
-                popup.appendChild(close);
+                //add the close button to the panel
+                panel.appendChild(close);
                 // when clicking on the close button remove the popup
                 close.addEventListener('click', function(e) {
                     popup.remove();
