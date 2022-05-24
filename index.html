@@ -96,6 +96,11 @@
 
             // add a image element to the div
             var img = document.createElement('img');
+            // add different colors to the image element 
+            img.classList.add('w-full', 'h-full', 'rounded-lg', 'shadow-lg', 'bg-gray-200');
+
+
+            // set the src of the image element
             img.src = 'https://via.placeholder.com/300x200';
             div.appendChild(img);
             document.body.appendChild(div);
